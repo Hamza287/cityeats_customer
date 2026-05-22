@@ -1,0 +1,18 @@
+# Example key.properties file
+# Update this with the correct values once you find the upload keystore password
+
+# Current (WRONG - using app-release-key.jks):
+# storePassword=cityeats2024
+# keyPassword=cityeats2024
+# keyAlias=city-eats-key
+# storeFile=app-release-key.jks
+
+# Correct (UPDATE THIS once you have the password):
+storePassword=[UPLOAD_KEYSTORE_PASSWORD]
+keyPassword=[UPLOAD_KEY_PASSWORD]
+keyAlias=[UPLOAD_KEY_ALIAS]
+storeFile=app/upload-keystore.jks
+
+# To find the key alias, run:
+# keytool -list -keystore android\app\upload-keystore.jks -storepass [PASSWORD]
+

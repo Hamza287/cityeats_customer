@@ -1,0 +1,8 @@
+Release Notes - Version 5.0.0
+
+• Enhanced app compatibility with latest Android devices
+• Improved display and user interface optimizations
+• Bug fixes and performance improvements
+• Better stability and reliability
+• Updated for optimal user experience
+

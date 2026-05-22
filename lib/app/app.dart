@@ -1,0 +1,146 @@
+import 'package:city_customer_app/ui/bottom_sheets/notice/notice_sheet.dart';
+import 'package:city_customer_app/ui/dialogs/info_alert/info_alert_dialog.dart';
+import 'package:city_customer_app/ui/views/home/home_view.dart';
+import 'package:city_customer_app/ui/views/startup/startup_view.dart';
+import 'package:city_customer_app/ui/views/update.dart';
+import 'package:stacked/stacked_annotations.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:city_customer_app/services/auth_service.dart';
+import 'package:city_customer_app/services/database_service.dart';
+import 'package:city_customer_app/services/localization_service.dart';
+import 'package:city_customer_app/services/location_service.dart';
+import 'package:city_customer_app/services/date_time_service.dart';
+import 'package:city_customer_app/services/local_storage_service.dart';
+import 'package:city_customer_app/ui/views/walkthrough/walkthrough_view.dart';
+import 'package:city_customer_app/ui/views/welcome/welcome_view.dart';
+import 'package:city_customer_app/ui/views/login/login_view.dart';
+import 'package:city_customer_app/ui/views/sign_up/sign_up_view.dart';
+import 'package:city_customer_app/ui/views/forgot_password/forgot_password_view.dart';
+import 'package:city_customer_app/ui/views/new_password/new_password_view.dart';
+import 'package:city_customer_app/ui/views/enable_location/enable_location_view.dart';
+import 'package:city_customer_app/ui/views/location/location_view.dart';
+import 'package:city_customer_app/ui/bottom_sheets/map_address/map_address_sheet.dart';
+import 'package:city_customer_app/services/api_service.dart';
+import 'package:city_customer_app/services/config_service.dart';
+import 'package:city_customer_app/services/token_interceptor_service.dart';
+import 'package:city_customer_app/ui/dialogs/error/error_dialog.dart';
+import 'package:city_customer_app/ui/views/root/root_view.dart';
+import 'package:city_customer_app/ui/views/account/account_view.dart';
+import 'package:city_customer_app/ui/views/email_verification/email_verification_view.dart';
+import 'package:city_customer_app/ui/views/restaurant_detail/restaurant_detail_view.dart';
+import 'package:city_customer_app/ui/bottom_sheets/restaurant_menu/restaurant_menu_sheet.dart';
+import 'package:city_customer_app/ui/views/product_description/product_description_view.dart';
+import 'package:city_customer_app/ui/views/restaurant_info/restaurant_info_view.dart';
+import 'package:city_customer_app/ui/views/cart/cart_view.dart';
+import 'package:city_customer_app/ui/views/categrory_rest/categrory_rest_view.dart';
+import 'package:city_customer_app/ui/views/checkout/checkout_view.dart';
+import 'package:city_customer_app/ui/views/add_to_cart/add_to_cart_view.dart';
+import 'package:city_customer_app/ui/views/my_orders/my_orders_view.dart';
+import 'package:city_customer_app/ui/views/order_detail/order_detail_view.dart';
+import 'package:city_customer_app/ui/views/filter/filter_view.dart';
+import 'package:city_customer_app/ui/views/deals/deals_view.dart';
+import 'package:city_customer_app/ui/views/edit_profile/edit_profile_view.dart';
+import 'package:city_customer_app/ui/views/change_password/change_password_view.dart';
+import 'package:city_customer_app/ui/views/support_help/support_help_view.dart';
+import 'package:city_customer_app/ui/views/save_addresses/save_addresses_view.dart';
+import 'package:city_customer_app/ui/views/order_confirmed/order_confirmed_view.dart';
+import 'package:city_customer_app/services/notification_service.dart';
+import 'package:city_customer_app/services/device_info_service.dart';
+import 'package:city_customer_app/services/filepicker_service.dart';
+import 'package:city_customer_app/ui/dialogs/no_internet/no_internet_dialog.dart';
+import 'package:city_customer_app/ui/views/favorite/favorite_view.dart';
+import 'package:city_customer_app/ui/views/search/search_view.dart';
+import 'package:city_customer_app/ui/views/showfilerdata/showfilerdata_view.dart';
+import 'package:city_customer_app/ui/dialogs/rider_reivew/rider_review_dialog.dart';
+import 'package:city_customer_app/ui/dialogs/rest_review/rest_review_dialog.dart';
+import 'package:city_customer_app/ui/dialogs/review_option/review_option_dialog.dart';
+import 'package:city_customer_app/ui/views/select_map_location/select_map_location_view.dart';
+import 'package:city_customer_app/ui/bottom_sheets/schedule_sheet/schedule_sheet_sheet.dart';
+import 'package:city_customer_app/ui/views/restaurant_detail/widgets/custom_date_picker_view.dart';
+// @stacked-import
+
+@StackedApp(
+  logger: StackedLogger(),
+  routes: [
+    MaterialRoute(page: HomeView),
+    MaterialRoute(page: StartupView),
+    MaterialRoute(page: WalkthroughView),
+    MaterialRoute(page: WelcomeView),
+    MaterialRoute(page: LoginView),
+    MaterialRoute(page: SignUpView),
+    MaterialRoute(page: ForgotPasswordView),
+    MaterialRoute(page: NewPasswordView),
+    MaterialRoute(page: EnableLocationView),
+    MaterialRoute(page: LocationView),
+    MaterialRoute(page: RootView),
+    MaterialRoute(page: AccountView),
+    MaterialRoute(page: EmailVerificationView),
+    MaterialRoute(page: RestaurantDetailView),
+    MaterialRoute(page: ProductDescriptionView),
+    MaterialRoute(page: RestaurantInfoView),
+    MaterialRoute(page: CartView),
+    MaterialRoute(page: CategroryRestView),
+    MaterialRoute(page: CheckoutView),
+    MaterialRoute(page: AddToCartView),
+    MaterialRoute(page: MyOrdersView),
+    MaterialRoute(page: OrderDetailView),
+    MaterialRoute(page: FilterView),
+    MaterialRoute(page: DealsView),
+    MaterialRoute(page: EditProfileView),
+    MaterialRoute(page: ChangePasswordView),
+    MaterialRoute(page: SupportHelpView),
+    MaterialRoute(page: SaveAddressesView),
+    MaterialRoute(page: OrderConfirmedView),
+    MaterialRoute(page: FavoriteView),
+    MaterialRoute(page: SearchView),
+    MaterialRoute(page: ShowfilerdataView),
+    MaterialRoute(page: UpdateScreen),
+    // MaterialRoute(page: DeliveryAddressView),
+    MaterialRoute(page: SelectMapLocationView),
+    MaterialRoute(page: CustomDatePickerView),
+// @stacked-route
+  ],
+  dependencies: [
+    LazySingleton(classType: BottomSheetService),
+    LazySingleton(classType: DialogService),
+    LazySingleton(classType: NavigationService),
+    LazySingleton(classType: AuthService),
+    LazySingleton(classType: DatabaseService),
+    LazySingleton(classType: LocalizationService),
+    LazySingleton(classType: LocationService),
+    LazySingleton(classType: DateTimeService),
+    LazySingleton(classType: LocalStorageService),
+    LazySingleton(classType: ApiService),
+    LazySingleton(
+      classType: ConfigService,
+      // instanceName: Environment.prod,
+      // environments: {
+      //   Environment.dev,
+      //   Environment.test,
+      //   Environment.prod,
+      // }
+    ),
+    LazySingleton(classType: TokenInterceptorService),
+    LazySingleton(classType: NotificationService),
+    LazySingleton(classType: DeviceInfoService),
+    LazySingleton(classType: FilepickerService),
+// @stacked-service
+  ],
+  bottomsheets: [
+    StackedBottomsheet(classType: NoticeSheet),
+    StackedBottomsheet(classType: MapAddressSheet),
+    StackedBottomsheet(classType: RestaurantMenuSheet),
+    StackedBottomsheet(classType: ScheduleSheetSheet),
+// @stacked-bottom-sheet
+  ],
+  dialogs: [
+    StackedDialog(classType: InfoAlertDialog),
+    StackedDialog(classType: ErrorDialog),
+    StackedDialog(classType: NoInternetDialog),
+    StackedDialog(classType: RiderReviewDialog),
+    StackedDialog(classType: RestReviewDialog),
+    StackedDialog(classType: ReviewOptionDialog),
+// @stacked-dialog
+  ],
+)
+class App {}
